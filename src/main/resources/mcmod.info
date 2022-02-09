@@ -1,0 +1,16 @@
+[
+    {
+      "modid": "${modId}",
+      "name": "${modName}",
+      "description": "Prevents the game from crashing too hard.",
+      "version": "${modVersion}",
+      "mcversion": "${minecraftVersion}",
+      "url": "https://github.com/FalsePattern/CrashGuard",
+      "updateUrl": "",
+      "authorList": ["FalsePattern"],
+      "credits": "",
+      "logoFile": "",
+      "screenshots": [],
+      "dependencies": ["spongemixins"]
+    }
+]
