@@ -25,7 +25,7 @@ import java.util.Date;
 @Mixin(Minecraft.class)
 public abstract class MinecraftMixin {
 
-    @Shadow protected abstract void runGameLoop();
+    @Shadow(aliases = "func_71411_J") private void runGameLoop(){}
 
     @Shadow public abstract void freeMemory();
 
@@ -41,7 +41,7 @@ public abstract class MinecraftMixin {
 
     @Shadow public abstract void loadWorld(WorldClient p_71403_1_);
 
-    @Shadow private volatile boolean running;
+    @Shadow volatile boolean running;
 
     @Shadow private boolean hasCrashed;
 
