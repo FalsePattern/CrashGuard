@@ -1,4 +1,4 @@
-//version: 1641429628falsepattern6
+//version: 1641429628falsepattern7
 /*
 DO NOT CHANGE THIS FILE!
 
@@ -334,7 +334,7 @@ runClient {
                 "--tweakClass", "org.spongepowered.asm.launch.MixinTweaker"
         ]
         jvmArguments += [
-                "-Dmixin.debug=true", "-Dmixin.debug.countInjections=true", "-Dmixin.debug.verbose=true", "-Dmixin.debug.export=true".toString()
+                "-Dmixin.debug=true", "-Dmixin.debug.countInjections=true", "-Dmixin.debug.verbose=true", "-Dmixin.debug.export=true"
         ]
     }
 
@@ -356,10 +356,10 @@ runServer {
     if (usesMixins.toBoolean()) {
         arguments += [
                 "--mods=../build/libs/$modId-${version}.jar",
-                "--tweakClass org.spongepowered.asm.launch.MixinTweaker"
+                "--tweakClass", "org.spongepowered.asm.launch.MixinTweaker"
         ]
         jvmArguments += [
-                "-Dmixin.debug=true", "-Dmixin.debug.countInjections=true", "-Dmixin.debug.verbose=true", "-Dmixin.debug.export=true".toString()
+                "-Dmixin.debug=true", "-Dmixin.debug.countInjections=true", "-Dmixin.debug.verbose=true", "-Dmixin.debug.export=true"
         ]
     }
 

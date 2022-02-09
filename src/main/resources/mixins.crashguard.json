@@ -1,0 +1,10 @@
+{
+  "required": true,
+  "minVersion": "0.7.11",
+  "package": "com.falsepattern.crashguard.mixin.mixins",
+  "plugin": "com.falsepattern.crashguard.mixin.mixinplugin.MixinPlugin",
+  "refmap": "mixins.crashguard.refmap.json",
+  "target": "@env(DEFAULT)",
+  "compatibilityLevel": "JAVA_8"
+}
+
