@@ -36,7 +36,6 @@ public class GlUtil {
         modelViewStackDepthDefault = GL11.glGetInteger(GL11.GL_MODELVIEW_STACK_DEPTH);
         projectionStackDepthDefault = GL11.glGetInteger(GL11.GL_PROJECTION_STACK_DEPTH);
         textureStackDepthDefault = GL11.glGetInteger(GL11.GL_TEXTURE_STACK_DEPTH);
-        colorMatrixStackDepthDefault = GL11.glGetInteger(ARBImaging.GL_COLOR_MATRIX_STACK_DEPTH);
         nameStackDepthDefault = GL11.glGetInteger(GL11.GL_NAME_STACK_DEPTH);
         attribStackSizeDefault = GL11.glGetInteger(GL11.GL_ATTRIB_STACK_DEPTH);
         clientAttribStackSizeDefault = GL11.glGetInteger(GL11.GL_CLIENT_ATTRIB_STACK_DEPTH);
@@ -46,7 +45,6 @@ public class GlUtil {
         int modelViewStackDepth = GL11.glGetInteger(GL11.GL_MODELVIEW_STACK_DEPTH);
         int projectionStackDepth = GL11.glGetInteger(GL11.GL_PROJECTION_STACK_DEPTH);
         int textureStackDepth = GL11.glGetInteger(GL11.GL_TEXTURE_STACK_DEPTH);
-        int colorMatrixStackDepth = GL11.glGetInteger(ARBImaging.GL_COLOR_MATRIX_STACK_DEPTH);
         int nameStackDepth = GL11.glGetInteger(GL11.GL_NAME_STACK_DEPTH);
         int attribStackSize = GL11.glGetInteger(GL11.GL_ATTRIB_STACK_DEPTH);
         int clientAttribStackSize = GL11.glGetInteger(GL11.GL_CLIENT_ATTRIB_STACK_DEPTH);
@@ -56,8 +54,6 @@ public class GlUtil {
         popAll(GL11::glPopMatrix, modelViewStackDepth - modelViewStackDepthDefault);
         GL11.glMatrixMode(GL11.GL_PROJECTION);
         popAll(GL11::glPopMatrix, projectionStackDepth - projectionStackDepthDefault);
-        GL11.glMatrixMode(GL11.GL_COLOR);
-        popAll(GL11::glPopMatrix, colorMatrixStackDepth - colorMatrixStackDepthDefault);
         GL11.glMatrixMode(GL11.GL_TEXTURE);
         popAll(GL11::glPopMatrix, textureStackDepth - textureStackDepthDefault);
         popAll(GL11::glPopName, nameStackDepth - nameStackDepthDefault);
@@ -107,7 +103,6 @@ public class GlUtil {
         GL11.glFogf(GL11.GL_FOG_START, 0.0F);
         GL11.glFogf(GL11.GL_FOG_END, 0.0F);
         GL11.glFog(GL11.GL_FOG_COLOR, setColorBuffer(0.0F, 0.0F, 0.0F, 0.0F));
-        if (GLContext.getCapabilities().GL_NV_fog_distance) GL11.glFogi(GL11.GL_FOG_MODE, NVFogDistance.GL_EYE_PLANE_ABSOLUTE_NV);
 
         // Reset polygon offset
         GL11.glPolygonOffset(0.0F, 0.0F);
