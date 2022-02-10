@@ -1,4 +1,4 @@
-package com.falsepattern.crashguard;
+package com.falsepattern.crashguard.util;
 
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.ModContainer;
@@ -14,7 +14,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.*;
 
-public final class ModIdentifier { // TODO: non-forge mods too
+public final class ModIdentifier {
     private static final Logger log = LogManager.getLogger();
 
     public static Set<ModContainer> identifyFromStacktrace(Throwable e) {

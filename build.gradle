@@ -1,4 +1,4 @@
-//version: 1641429628falsepattern7
+//version: 1641429628falsepattern8
 /*
 DO NOT CHANGE THIS FILE!
 
@@ -330,7 +330,7 @@ runClient {
 
     if(usesMixins.toBoolean()) {
         arguments += [
-                "--mods=../build/libs/$modId-${version}.jar",
+                "--mods=../build/libs/$archivesBaseName-${version}.jar",
                 "--tweakClass", "org.spongepowered.asm.launch.MixinTweaker"
         ]
         jvmArguments += [
@@ -355,7 +355,7 @@ runServer {
 
     if (usesMixins.toBoolean()) {
         arguments += [
-                "--mods=../build/libs/$modId-${version}.jar",
+                "--mods=../build/libs/$archivesBaseName-${version}.jar",
                 "--tweakClass", "org.spongepowered.asm.launch.MixinTweaker"
         ]
         jvmArguments += [

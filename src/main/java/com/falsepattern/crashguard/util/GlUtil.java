@@ -1,4 +1,4 @@
-package com.falsepattern.crashguard;
+package com.falsepattern.crashguard.util;
 
 import net.minecraft.client.renderer.GLAllocation;
 import net.minecraft.client.renderer.OpenGlHelper;

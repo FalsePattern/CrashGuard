@@ -1,8 +1,11 @@
-package com.falsepattern.crashguard;
+package com.falsepattern.crashguard.gui;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
 
+@SideOnly(Side.CLIENT)
 public class GuiText {
     private final boolean centered;
     private final String text;
