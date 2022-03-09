@@ -20,7 +20,7 @@ public abstract class TessellatorMixin {
             require = 1)
     private void softNotTessellating(CallbackInfoReturnable<Integer> cir) {
         if (!isDrawing) {
-            CrashGuard.softCrash = true;
+            CrashGuard.softCrash = false;
             CrashGuard.crashHint = new String[]{"Tessellator error", "Not tesselating!"};
             reset();
             throw new IllegalStateException("Not tesselating!");
@@ -32,7 +32,7 @@ public abstract class TessellatorMixin {
             require = 1)
     private void softAlreadyTessellating(int p_78371_1_, CallbackInfo ci) {
         if (isDrawing) {
-            CrashGuard.softCrash = true;
+            CrashGuard.softCrash = false;
             CrashGuard.crashHint = new String[]{"Tessellator error", "Already Tesselating!"};
             isDrawing = false;
             reset();
