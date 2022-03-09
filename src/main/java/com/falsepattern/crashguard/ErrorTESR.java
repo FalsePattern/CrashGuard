@@ -38,11 +38,11 @@ public class ErrorTESR extends TileEntitySpecialRenderer {
             GL11.glDisable(GL11.GL_LIGHTING);
             Tessellator.instance.startDrawingQuads();
             Tessellator.instance.disableColor();
+            Tessellator.instance.setBrightness(240);
             Tessellator.instance.addVertexWithUV(-0.5, 0.5, 0, 0, 0);
             Tessellator.instance.addVertexWithUV(-0.5, -0.5, 0, 0, 1);
             Tessellator.instance.addVertexWithUV(0.5, -0.5, 0, 1, 1);
             Tessellator.instance.addVertexWithUV(0.5, 0.5, 0, 1, 0);
-            Tessellator.instance.addVertexWithUV(0.5, 0, -0.5, 0, 0);
             Tessellator.instance.draw();
             GL11.glPopAttrib();
             GL11.glEndList();
