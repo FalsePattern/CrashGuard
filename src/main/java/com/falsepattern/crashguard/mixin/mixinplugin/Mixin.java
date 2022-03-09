@@ -8,6 +8,7 @@ import java.util.Set;
 
 public enum Mixin {
     ClientMinecraftMixin(builder(Side.CLIENT).mixin("MinecraftMixin")),
+    TessellatorMixin(builder(Side.CLIENT).mixin("TessellatorMixin")),
     TileEntityRendererDispatcherMixin(builder(Side.CLIENT).mixin("TileEntityRendererDispatcherMixin")),
     ;
 
