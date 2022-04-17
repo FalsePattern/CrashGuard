@@ -8,7 +8,7 @@ import org.apache.logging.log4j.Logger;
      version = Tags.VERSION,
      name = Tags.MODNAME,
      acceptedMinecraftVersions = "[1.7.10]",
-     dependencies = "required-after:spongemixins@[1.3.0,);")
+     dependencies = "required-after:falsepatternlib@[0.5.0,);")
 public class CrashGuard {
     public static boolean softCrash = false;
     public static String[] crashHint = null;

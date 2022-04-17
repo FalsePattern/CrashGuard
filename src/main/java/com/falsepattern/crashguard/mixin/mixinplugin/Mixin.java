@@ -1,64 +1,29 @@
 package com.falsepattern.crashguard.mixin.mixinplugin;
 
-import cpw.mods.fml.relauncher.FMLLaunchHandler;
+import com.falsepattern.lib.mixin.IMixin;
+import com.falsepattern.lib.mixin.ITargetedMod;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+import java.util.function.Predicate;
 
-public enum Mixin {
-    ClientMinecraftMixin(builder(Side.CLIENT).mixin("MinecraftMixin")),
-    TessellatorMixin(builder(Side.CLIENT).mixin("TessellatorMixin")),
-    TileEntityRendererDispatcherMixin(builder(Side.CLIENT).mixin("TileEntityRendererDispatcherMixin")),
+import static com.falsepattern.lib.mixin.IMixin.PredicateHelpers.*;
+
+@RequiredArgsConstructor
+public enum Mixin implements IMixin {
+    //region Minecraft->client
+        ClientMinecraftMixin(Side.CLIENT, always(), "MinecraftMixin"),
+        TessellatorMixin(Side.CLIENT, always(), "TessellatorMixin"),
+        TileEntityRendererDispatcherMixin(Side.CLIENT, always(), "TileEntityRendererDispatcherMixin"),
+    //endregion Minecraft->client
     ;
 
-    public final String mixin;
-    public final Set<TargetedMod> targetedMods;
+    @Getter
     private final Side side;
-
-    Mixin(Builder builder) {
-        this.mixin = builder.mixin;
-        this.targetedMods = builder.targetedMods;
-        this.side = builder.side;
-    }
-
-    public boolean shouldLoad(List<TargetedMod> loadedMods) {
-        return (side == Side.COMMON
-                || side == Side.SERVER && FMLLaunchHandler.side().isServer()
-                || side == Side.CLIENT && FMLLaunchHandler.side().isClient())
-                && loadedMods.containsAll(targetedMods);
-    }
-
-
-    @SuppressWarnings("SameParameterValue")
-    private static Builder builder(Side side) {
-        return new Builder(side);
-    }
-
-    private static class Builder {
-        public String mixin;
-        public Side side;
-        public Set<TargetedMod> targetedMods = new HashSet<>();
-
-        public Builder(Side side) {
-            this.side = side;
-        }
-
-        public Builder mixin(String mixinClass) {
-            mixin = side.name().toLowerCase() + "." + mixinClass;
-            return this;
-        }
-
-        public Builder target(TargetedMod mod) {
-            targetedMods.add(mod);
-            return this;
-        }
-    }
-
-    private enum Side {
-        COMMON,
-        CLIENT,
-        SERVER
-    }
+    @Getter
+    private final Predicate<List<ITargetedMod>> filter;
+    @Getter
+    private final String mixin;
 }
 

@@ -1,39 +1,19 @@
 package com.falsepattern.crashguard.mixin.mixinplugin;
 
-import com.google.common.io.Files;
-import lombok.val;
+import com.falsepattern.lib.mixin.ITargetedMod;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
-import java.nio.file.Path;
+import java.util.function.Predicate;
 
-public enum TargetedMod {
+@RequiredArgsConstructor
+public enum TargetedMod implements ITargetedMod {
 
-    VANILLA("Minecraft", "unused", true);
-
-    public final String modName;
-    public final String jarNamePrefixLowercase;
-
-    public final boolean loadInDevelopment;
-
-    TargetedMod(String modName, String jarNamePrefix, boolean loadInDevelopment) {
-        this.modName = modName;
-        this.jarNamePrefixLowercase = jarNamePrefix.toLowerCase();
-        this.loadInDevelopment = loadInDevelopment;
-    }
-
-    @SuppressWarnings("UnstableApiUsage")
-    public boolean isMatchingJar(Path path) {
-        val pathString = path.toString();
-        val nameLowerCase = Files.getNameWithoutExtension(pathString).toLowerCase();
-        val fileExtension = Files.getFileExtension(pathString);
-
-        return nameLowerCase.startsWith(jarNamePrefixLowercase) && "jar".equals(fileExtension);
-    }
-
-    @Override
-    public String toString() {
-        return "TargetedMod{" +
-                "modName='" + modName + '\'' +
-                ", jarNamePrefixLowercase='" + jarNamePrefixLowercase + '\'' +
-                '}';
-    }
+    ;
+    @Getter
+    private final String modName;
+    @Getter
+    private final boolean loadInDevelopment;
+    @Getter
+    private final Predicate<String> condition;
 }
